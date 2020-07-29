@@ -228,12 +228,12 @@ Page({
       location:'',
       success:function(res){
         console.log(res);
+        _this.setData({
+          location:res.result.formatted_addresses.recommend
+        })
       },fail:function(error){
         console.error(error)
       }
-    })
-    _this.setData({
-      location:res.result.formatted_addresses.recommend
     })
   },
 })
