@@ -166,6 +166,9 @@ Page({
                   'icon': 'none',
                   duration: 3000
                 })
+                wx.navigateTo({
+                  url: '../show/show',
+                })
               },
               fail: function () {
                 wx.showToast({
