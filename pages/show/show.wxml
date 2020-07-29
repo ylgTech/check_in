@@ -13,7 +13,7 @@
 	<view class="num1">0</view>
 	<view class="text">天打卡</view>
 </view>
-<view class="scr-out" style="top:{{contentHeight*0.22}}px;position: relative;width:{{windowWidth}}px;">
+<view class="scr-out" style="top:{{contentHeight*0.24}}px;position: relative;width:{{windowWidth}}px;">
 	<scroll-view scroll-y="true" class="scr">
 		<view id="green">1</view>
 		<view id="red">2</view>
