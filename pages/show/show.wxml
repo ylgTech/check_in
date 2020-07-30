@@ -5,12 +5,12 @@
 <view>
 	<image class="bg" style="height:{{contentHeight}}px" src="/image/tap.png"></image>
 </view>
-<view class="num" style="top:{{contentHeight*0.18}}px;position: relative;width:{{windowWidth}}px;text-align: center;">18020003</view>
+<view class="num" style="top:{{contentHeight*0.18}}px;position: relative;width:{{windowWidth}}px;text-align: center;">{{username}}</view>
 <view class="day" style="top:{{contentHeight*0.18}}px;position: relative;width:{{windowWidth}}px;">
 	<view class="text">已坚持</view>
-	<view class="num1">0</view>
-	<view class="num1">0</view>
-	<view class="num1">0</view>
+	<view class="num1">{{a}}</view>
+	<view class="num1">{{b}}</view>
+	<view class="num1">{{c}}</view>
 	<view class="text">天打卡</view>
 </view>
 <view class="scr-out" style="top:{{contentHeight*0.24}}px;position: relative;width:{{windowWidth}}px;">

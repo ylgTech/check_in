@@ -9,6 +9,9 @@ Page({
    */
   data: {
     Ofi: null,
+    a: 0,
+    b: 0,
+    c: 0,
     username: '',
     windowHeight: 0,
     statusBarHeight: 0,
@@ -17,12 +20,14 @@ Page({
     windowWidth: 0,
     ymd: '',
     hm: '',
+    match_all: [],
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    var that = this
     this.setData({
       username: options.username,
       Ofi: options.Ofi,
@@ -30,6 +35,44 @@ Page({
     this.getWindowHeight();
     this.getTime();
     this.jumpTo();
+    db.collection('clock_data').where({
+      number: that.data.username,
+    }).get({
+      success: res => {
+        console.log(res)
+        if (res.data.length > 99) {
+          var a = parseInt(res.data.length / 100)
+          var b = parseInt(res.data.length / 10) - a * 10
+          var c = res.data.length % 10
+          that.setData({
+            a: a,
+            b: b,
+            c: c
+          })
+        } else if (res.data.length < 100 || res.data.length > 9) {
+          var a = 0
+          var b = parseInt(res.data.length / 10)
+          var c = res.data.length % 10
+          that.setData({
+            a: a,
+            b: b,
+            c: c
+          })
+        } else {
+          var a = 0
+          var b = 0
+          var c = res.data.length
+          that.setData({
+            a: a,
+            b: b,
+            c: c
+          })
+        }
+        that.setData({
+          match_all: res.data.reverse()
+        })
+      }
+    })
   },
 
   /**
@@ -127,18 +170,21 @@ Page({
   },
   jumpTo: function (e) {
     var that = this
-    db.collection('clock_data').where({
-      ymd: that.data.ymd,
-      number: that.data.username,
-    }).get({
-      success: res => {
-        console.log(res)
-        if (res.data.length == 0) {
-          wx.navigateTo({
-            url: '../load/load?username=' + that.data.username + '&Ofi' + that.data.Ofi,
-          })
-        }
-      },
-    })
+    console.log(that.data.Ofi)
+    if (that.data.Ofi == 'false') {
+      db.collection('clock_data').where({
+        ymd: that.data.ymd,
+        number: that.data.username,
+      }).get({
+        success: res => {
+          console.log(res)
+          if (res.data.length == 0) {
+            wx.navigateTo({
+              url: '../load/load?Ofi=' + that.data.Ofi + '&username=' + that.data.username,
+            })
+          }
+        },
+      })
+    }
   }
 })

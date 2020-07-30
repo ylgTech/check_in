@@ -111,14 +111,40 @@ Page({
     var that = this
     if (that.data.Ofi == true) {
       db.collection('Special_login').where({
-        _username: that.data.username,
-        _password: that.data.password,
+        username: that.data.username,
+        password: that.data.password,
+      }).get({
+        success: res => {
+          console.log(res)
+          if (res.data.length != 0) {
+            console.log(that.data.Ofi)
+            wx.navigateTo({
+              url: '../show/show?Ofi=' + that.data.Ofi + '&username=' + that.data.username,
+            })
+          } else {
+            wx.showToast({
+              title: '请检查账号密码是否正确',
+              icon: 'none'
+            })
+          }
+        },
+        catch: res => {
+          wx.showToast({
+            title: '网络繁忙，请稍后再试',
+            icon: 'none'
+          })
+        }
+      })
+    } else {
+      db.collection('normal_login').where({
+        username: that.data.username,
+        password: that.data.password,
       }).get({
         success: res => {
           console.log(res)
           if (res.data.length != 0) {
             wx.navigateTo({
-              url: '../show/show?username='+that.data.username+'&Ofi'+that.data.Ofi,
+              url: '../show/show?Ofi=' + that.data.Ofi + '&username=' + that.data.username,
             })
           } else {
             wx.showToast({

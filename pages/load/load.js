@@ -12,9 +12,9 @@ var qqmapsdk = new QQMapWX({
 });
 Page({
   data: {
-    Ofi:null,
-    ymd:'',
-    hm:'',
+    Ofi: null,
+    ymd: '',
+    hm: '',
     bigImg: '',
     username: '',
     windowHeight: 0,
@@ -29,7 +29,7 @@ Page({
   onLoad: function (options) {
     this.setData({
       username: options.username,
-      Ofi:options.Ofi,
+      Ofi: options.Ofi,
     })
     this.getWindowHeight();
     this.getTime();
@@ -59,6 +59,7 @@ Page({
         }
       })
     }
+    console.log('load'+this.data.Ofi)
   },
   getUserInfo: function (e) {
     console.log(e)
@@ -143,10 +144,10 @@ Page({
             db.collection("clock_data").add({
               data: {
                 number: that.data.username,
-                ymd:that.data.ymd,
-                hm:that.data.hm,
+                ymd: that.data.ymd,
+                hm: that.data.hm,
                 img: fileID,
-                location:that.data.location,
+                location: that.data.location,
               },
               success: function () {
                 wx.showToast({
@@ -155,7 +156,7 @@ Page({
                   duration: 3000
                 })
                 wx.navigateTo({
-                  url: '../show/show?username=' + that.data.username+'&Ofi'+that.data.Ofi,
+                  url: '../show/show?Ofi=' + that.data.Ofi + '&username=' + that.data.username,
                 })
               },
               fail: function () {
@@ -179,29 +180,29 @@ Page({
   },
   getTime: function () {
     var that = this
-    var ymd=util.formatTime_ymd(new Date());
-    var hour=util.formatDate_hour(new Date());
-    var minute=util.formatDate_minute(new Date());
-    if(hour[0]<10)
-    {
-      hour=hour%10
+    var ymd = util.formatTime_ymd(new Date());
+    var hour = util.formatDate_hour(new Date());
+    var minute = util.formatDate_minute(new Date());
+    if (hour[0] < 10) {
+      hour = hour % 10
     }
-    var hm=hour+':'+minute
+    var hm = hour + ':' + minute
     that.setData({
-      ymd:ymd,
-      hm:hm,
+      ymd: ymd,
+      hm: hm,
     })
   },
-  formSubmit(e){
-    var _this=this;
+  formSubmit(e) {
+    var _this = this;
     qqmapsdk.reverseGeocoder({
-      location:'',
-      success:function(res){
+      location: '',
+      success: function (res) {
         console.log(res);
         _this.setData({
-          location:res.result.formatted_addresses.recommend
+          location: res.result.formatted_addresses.recommend
         })
-      },fail:function(error){
+      },
+      fail: function (error) {
         console.error(error)
       }
     })
