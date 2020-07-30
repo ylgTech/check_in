@@ -1,0 +1,17 @@
+.print{
+  bottom: 50rpx;
+  width: 100%;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-items: center;
+  text-align: center;
+  color: white;
+}
+.print-text{
+  background-color: #238ccd;
+  padding: 10rpx;
+  padding-left: 20rpx;
+  padding-right: 20rpx;
+}
