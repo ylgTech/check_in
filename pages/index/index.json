@@ -1,3 +1,6 @@
 {
-  "usingComponents": {}
+  "usingComponents": {
+    "border": "../../component/specialBorder/specialBorder",
+    "form": "../../component/form/form"
+  }
 }

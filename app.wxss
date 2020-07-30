@@ -28,49 +28,6 @@
   border-left: 12rpx solid transparent;
 }
 
-.cro-bar {
-  display: flex;
-  width: 90%;
-  margin-left: 5%;
-}
-
-.cro-main {
-  height: 10rpx;
-  width: calc(100% - 20rpx);
-  background-color: white;
-}
-
-.top-dashed {
-  border-top: dashed grey 2rpx;
-}
-
-/* 左上 */
-.border-lt {
-  height: 10rpx;
-  width: 10rpx;
-  background: radial-gradient(16rpx at left top, transparent 50%, white 50%);
-}
-
-/* 右上 */
-.border-rt {
-  height: 10rpx;
-  width: 10rpx;
-  background: radial-gradient(16rpx at right top, transparent 50%, white 50%);
-}
-
-/* 右下 */
-.border-rb {
-  height: 10rpx;
-  width: 10rpx;
-  background: radial-gradient(16rpx at right bottom, transparent 50%, white 50%);
-}
-
-.border-lb {
-  height: 10rpx;
-  width: 10rpx;
-  background: radial-gradient(16rpx at left bottom, transparent 50%, white 50%);
-}
-
 .container {
   background-color: white;
   width: 90%;
@@ -78,9 +35,6 @@
   padding: 60rpx 0;
   display: flex;
   justify-content: center;
-}
-
-.box-shadow {
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.08);
 }
 

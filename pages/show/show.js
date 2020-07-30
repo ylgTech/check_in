@@ -86,6 +86,9 @@ Page({
     var that = this
     var id = e.currentTarget.dataset.id; // 获取点击的推文的数组下标
     that.data.match_all[id].show = !that.data.match_all[id].show
+    that.setData({
+      match_all: that.data.match_all
+    })
     console.log(that.data.match_all[id].show)
   },
   /**

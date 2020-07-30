@@ -1,0 +1,10 @@
+	<view class="cro-bar">
+		<view class="border-lb"></view>
+		<view class="cro-main"></view>
+		<view class="border-rb"></view>
+	</view>
+	<view class="cro-bar">
+		<view class="border-lt"></view>
+		<view class="cro-main top-dashed"></view>
+		<view class="border-rt"></view>
+	</view>
