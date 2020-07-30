@@ -71,3 +71,12 @@
   align-items: center;
   justify-content: center;
 }
+.detail{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.detail-img{
+  height: 50rpx;
+  width: 50rpx;
+}
