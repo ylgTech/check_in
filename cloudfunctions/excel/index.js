@@ -17,14 +17,13 @@ exports.main = async(event, context) => {
     let dataCVS = 'test.xlsx'
     //2，定义存储数据的
     let alldata = [];
-    let row = ['具体时间', '具体日期', '打卡图片地址', '打卡地址', '用户名']; //表属性
+    let row = ['具体时间', '具体日期', '打卡地址', '用户名']; //表属性
     alldata.push(row);
 
     for (let key in userdata) {
       let arr = [];
       arr.push(userdata[key].hm);
       arr.push(userdata[key].ymd);
-      arr.push(userdata[key].img);
       arr.push(userdata[key].location);
       arr.push(userdata[key].number);
       alldata.push(arr)
