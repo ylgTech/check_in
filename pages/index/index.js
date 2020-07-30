@@ -17,9 +17,9 @@ Page({
         username: username
       })
     }
-    let check = wx.getStorageSync('checkInfo')
-    console.log(check)
-    let ymd = util.formatTime_ymd(date);
+    let checkInfo = wx.getStorageSync('checkInfo')
+    console.log(checkInfo)
+    let ymd = util.formatTime_ymd(new Date());
     if (checkInfo == ymd) {
       that.setData({
         checkSuccess: true

@@ -12,7 +12,9 @@
 	<border></border>
 	<view class="container border-bottom">
 		<form wx:if="{{ username == '' }}" bindloginSuccess="loginSuccess"></form>
-		<check wx:if="{{ username != '' && !checkSuccess && username != 'admin' }}" bindcheckSuccess="checkSuccess"></check>
-		<list wx:if="{{ username != '' && (checkSuccess || username == 'admin') }}"></list>
+		<check wx:if="{{ username != '' && !checkSuccess }}" bindcheckSuccess="checkSuccess"></check>
+		<list wx:if="{{ username != '' && checkSuccess }}"></list>
+		<!-- <check wx:if="{{ username != '' && !checkSuccess && username != 'admin' }}" bindcheckSuccess="checkSuccess"></check>
+		<list wx:if="{{ username != '' && (checkSuccess || username == 'admin') }}"></list> -->
 	</view>
 </view>
