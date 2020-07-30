@@ -4,9 +4,6 @@ const db = wx.cloud.database()
 Component({
   data: {
     username: '',
-    a: 0,
-    b: 0,
-    c: 0,
     match_all: [],
   }, // 私有数据，可用于模板渲染
 
@@ -21,14 +18,28 @@ Component({
           username: username
         })
       }
+      wx.showLoading({
+        title: '加载中~',
+      })
       db.collection('clock_data').where({
         number: that.data.username,
-      }).get({
+      }).orderBy('ymd', 'desc').get({
         success: res => {
           console.log(res)
           that.setData({
-            match_all: res.data.reverse()
+            match_all: res.data
           })
+          that.triggerEvent('UpdateDays', {
+            days: res.data.length
+          })
+        },
+        fail: res => {
+          wx.showToast({
+            title: '请检查网络~',
+          })
+        },
+        complete: res => {
+          wx.hideLoading({})
         }
       })
     },

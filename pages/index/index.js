@@ -52,5 +52,10 @@ Page({
     this.setData({
       checkSuccess: true
     })
+  },
+
+  updateDays: function (e) {
+    const board = this.selectComponent('.board');
+    board.updateDays(e.detail.days)
   }
 })
