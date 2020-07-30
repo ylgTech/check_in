@@ -7,7 +7,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 630rpx;
+  height: 440rpx;
 }
 
 .scr-out {
@@ -24,7 +24,8 @@
 
 .detail-img {
   height: 50rpx;
-  width: 50rpx;
+  width: 68rpx;
+  margin-bottom: 29rpx;
 }
 
 .btn-delete {
@@ -53,4 +54,8 @@
 }
 .btn-img{
   border: solid 1px gray;
+}
+.detail-word{
+  color:#6b6b6b;
+  font-size: 35rpx;
 }
