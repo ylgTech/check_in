@@ -78,6 +78,8 @@ Page({
   },
 
   info: function (e) {
+    this.savaExcel();
+    this.getFileUrl();
     this.copyFileUrl();
   },
 
