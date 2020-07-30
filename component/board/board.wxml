@@ -1,2 +1,8 @@
-<!--component/board/board.wxml-->
-<text>component/board/board.wxml</text>
+<view class="num" style="position: relative;text-align: center;">{{username}}</view>
+<view class="day" style="position: relative;">
+	<view class="text">已坚持</view>
+	<view class="num1">{{a}}</view>
+	<view class="num1">{{b}}</view>
+	<view class="num1">{{c}}</view>
+	<view class="text">天打卡</view>
+</view>

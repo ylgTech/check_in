@@ -4,7 +4,10 @@ const db = wx.cloud.database()
 Component({
   data: {
     username: '',
-    match_all:[],
+    a: 0,
+    b: 0,
+    c: 0,
+    match_all: [],
   }, // 私有数据，可用于模板渲染
 
   lifetimes: {
@@ -43,15 +46,15 @@ Component({
       })
       console.log(that.data.match_all[id].show)
     },
-    delete:function(e){
-      var that=this
-      var id = e.currentTarget.dataset.id;  // 获取点击的推文的数组下标
-      var _id = that.data.match_all[id]._id;  // 通过id判断是哪个推文的链接
+    delete: function (e) {
+      var that = this
+      var id = e.currentTarget.dataset.id; // 获取点击的推文的数组下标
+      var _id = that.data.match_all[id]._id; // 通过id判断是哪个推文的链接
       db.collection('clock_data').doc(_id).remove({
-        success:res=>{
+        success: res => {
           wx.showToast({
             title: '删除成功',
-            icon:'success',
+            icon: 'success',
           })
           db.collection('clock_data').where({
             number: that.data.username,
@@ -64,10 +67,10 @@ Component({
             }
           })
         },
-        fail:err=>{
+        fail: err => {
           wx.showToast({
             title: '删除失败',
-            icon:'none',
+            icon: 'none',
           })
         }
       })
