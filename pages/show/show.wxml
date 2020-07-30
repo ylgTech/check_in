@@ -5,19 +5,22 @@
 <view>
 	<image class="bg" style="height:{{contentHeight}}px" src="/image/tap.png"></image>
 </view>
-<view class="num" style="top:{{contentHeight*0.18}}px;position: relative;width:{{windowWidth}}px;text-align: center;">18020003</view>
+<view class="num" style="top:{{contentHeight*0.18}}px;position: relative;width:{{windowWidth}}px;text-align: center;">{{username}}</view>
 <view class="day" style="top:{{contentHeight*0.18}}px;position: relative;width:{{windowWidth}}px;">
 	<view class="text">已坚持</view>
-	<view class="num1">0</view>
-	<view class="num1">0</view>
-	<view class="num1">0</view>
+	<view class="num1">{{a}}</view>
+	<view class="num1">{{b}}</view>
+	<view class="num1">{{c}}</view>
 	<view class="text">天打卡</view>
 </view>
-<view class="scr-out" style="top:{{contentHeight*0.22}}px;position: relative;width:{{windowWidth}}px;">
+<view class="scr-out" style="top:{{contentHeight*0.24}}px;position: relative;width:{{windowWidth}}px;">
 	<scroll-view scroll-y="true" class="scr">
-		<view id="green">1</view>
-		<view id="red">2</view>
-		<view id="yellow">3</view>
-		<view id="blue">4</view>
+		<view wx:for="{{match_all}}" data-id='{{index}}'>
+			<view class="detail">
+				<view>{{item.ymd}}-{{item.hm}} {{item.location}}</view>
+				<image class="detail-img" bindtap="match_detail" data-id='{{index}}' src="{{item.show?'https://636c-clock-ye8c9-1302754083.tcb.qcloud.la/%E7%B3%BB%E7%BB%9F%E5%9B%BE%E6%A0%87/close.png?sign=d5bf7ede161e5d945da7fb205cb1f774&t=1596080324':'https://636c-clock-ye8c9-1302754083.tcb.qcloud.la/%E7%B3%BB%E7%BB%9F%E5%9B%BE%E6%A0%87/open.png?sign=5b6873865ae311b94036dc593733e812&t=1596080337'}}"></image>
+			</view>
+			<image wx:if="{{item.show}}" src="{{item.img}}"></image>
+		</view>
 	</scroll-view>
 </view>

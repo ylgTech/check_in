@@ -12,12 +12,9 @@ var qqmapsdk = new QQMapWX({
 });
 Page({
   data: {
-    Ofi:null,
-    year: '',
-    month: '',
-    day: '',
-    hour:'',
-    minute:'',
+    Ofi: null,
+    ymd: '',
+    hm: '',
     bigImg: '',
     username: '',
     windowHeight: 0,
@@ -29,19 +26,13 @@ Page({
     canIUse: wx.canIUse('button.open-type.getUserInfo')
   },
   //事件处理函数
-  bindViewTap: function () {
-    wx.navigateTo({
-      url: '../logs/logs'
-    })
-  },
   onLoad: function (options) {
     this.setData({
       username: options.username,
-      Ofi:options.Ofi,
+      Ofi: options.Ofi,
     })
     this.getWindowHeight();
     this.getTime();
-    this.jumpTo();
     if (app.globalData.userInfo) {
       this.setData({
         userInfo: app.globalData.userInfo,
@@ -68,6 +59,7 @@ Page({
         }
       })
     }
+    console.log('load'+this.data.Ofi)
   },
   getUserInfo: function (e) {
     console.log(e)
@@ -151,20 +143,21 @@ Page({
             const db = wx.cloud.database();
             db.collection("clock_data").add({
               data: {
-                _number: that.data.username,
-                _year: that.data.year,
-                _month: that.data.month,
-                _day: that.data.day,
-                _hour:that.data.hour,
-                _minute:that.data.minute,
-                _img: fileID,
-                _location:that.data.location,
+                number: that.data.username,
+                ymd: that.data.ymd,
+                hm: that.data.hm,
+                img: fileID,
+                location: that.data.location,
+                show:false,
               },
               success: function () {
                 wx.showToast({
                   title: '图片存储成功',
                   'icon': 'none',
                   duration: 3000
+                })
+                wx.navigateTo({
+                  url: '../show/show?Ofi=' + that.data.Ofi + '&username=' + that.data.username,
                 })
               },
               fail: function () {
@@ -188,50 +181,29 @@ Page({
   },
   getTime: function () {
     var that = this
-    var year = util.formatDate_year(new Date());
-    var month = util.formatDate_month(new Date());
-    var day = util.formatDate_day(new Date());
-    var hour=util.formatDate_hour(new Date());
-    var minute=util.formatDate_minute(new Date());
+    var ymd = util.formatTime_ymd(new Date());
+    var hour = util.formatDate_hour(new Date());
+    var minute = util.formatDate_minute(new Date());
+    if (hour[0] < 10) {
+      hour = hour % 10
+    }
+    var hm = hour + ':' + minute
     that.setData({
-      year: year[0],
-      month: month[0],
-      day: day[0],
-      hour:hour[0],
-      minute:minute[0],
-    })
-    console.log(year[0])
-    console.log(month[0])
-    console.log(day[0])
-  },
-  jumpTo: function (e) {
-    var that = this
-    db.collection('clock_data').where({
-      _year: that.data.year,
-      _month: that.data.month,
-      _day: that.data.day,
-      _number: that.data.username,
-    }).get({
-      success: res => {
-        console.log(res)
-        if (res.data.length != 0) {
-          wx.navigateTo({
-            url: '../show/show?username=' + that.data.username+'&Ofi'+that.data.Ofi,
-          })
-        }
-      },
+      ymd: ymd,
+      hm: hm,
     })
   },
-  formSubmit(e){
-    var _this=this;
+  formSubmit(e) {
+    var _this = this;
     qqmapsdk.reverseGeocoder({
-      location:'',
-      success:function(res){
+      location: '',
+      success: function (res) {
         console.log(res);
         _this.setData({
-          location:res.result.formatted_addresses.recommend
+          location: res.result.formatted_addresses.recommend
         })
-      },fail:function(error){
+      },
+      fail: function (error) {
         console.error(error)
       }
     })
