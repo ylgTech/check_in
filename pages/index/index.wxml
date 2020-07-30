@@ -15,4 +15,7 @@
 		<check wx:if="{{ username != '' && !checkSuccess && username != 'admin' }}" bindcheckSuccess="checkSuccess"></check>
 		<list wx:if="{{ username != '' && (checkSuccess || username == 'admin') }}" bindUpdateDays="updateDays"></list>
 	</view>
+	<view class="print" wx:if="{{ username != '' && (checkSuccess || username == 'admin') }}">
+		<view bindtap="info" class="print-text">打印小组打卡信息</view>
+	</view>
 </view>

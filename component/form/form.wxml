@@ -8,11 +8,7 @@
 		<text>密码：</text>
 		<input placeholder="请输入密码" value="{{ password }}" bindblur="inputPassword" password="true"></input>
 	</view>
-	<!-- <checkbox-group class="checkbox-container" bindchange="checkboxChange">
-		<checkbox value="Ofi" checked="{{ false }}" class="cb blue"></checkbox>
-		<view class="title">以管理员身份进入</view>
-	</checkbox-group> -->
-	<view class="log" bindtap="submit">
-		<image src="/image/log.png" style="height:60px;width:60px;"></image>
+	<view class="log">
+		<image src="/image/log.png" bindtap="submit" style="height:60px;width:60px;"></image>
 	</view>
 </view>

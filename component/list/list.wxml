@@ -1,6 +1,6 @@
 <view class="scr-out">
 	<scroll-view scroll-y="true" class="scr">
-		<view wx:for="{{match_all}}" data-id='{{index}}'>
+		<view wx:for="{{match_all}}" data-id='{{index}}' wx:key="index">
 			<view class="detail">
 				<view class="detail-word">{{item.ymd}}-{{item.hm}} {{item.location}}</view>
 				<image class="detail-img" bindtap="match_detail" data-id='{{index}}' src="{{item.show?'https://636c-clock-ye8c9-1302754083.tcb.qcloud.la/%E7%B3%BB%E7%BB%9F%E5%9B%BE%E6%A0%87/close.png?sign=d5bf7ede161e5d945da7fb205cb1f774&t=1596080324':'https://636c-clock-ye8c9-1302754083.tcb.qcloud.la/%E7%B3%BB%E7%BB%9F%E5%9B%BE%E6%A0%87/open.png?sign=5b6873865ae311b94036dc593733e812&t=1596080337'}}"></image>
