@@ -4,12 +4,10 @@ const app = getApp()
 var util = require('../../utils/util.js');
 var QQMapWX = require('../../utils/qqmap-wx-jssdk.js');
 const db = wx.cloud.database()
-
 var qqmapsdk = new QQMapWX({
-
   key: 'ZVDBZ-VBUHQ-CRJ55-GRU7W-FDACJ-B4BMW'
-
 });
+
 Page({
   data: {
     Ofi: null,

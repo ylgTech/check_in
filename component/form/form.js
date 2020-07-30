@@ -4,6 +4,7 @@ Component({
   options: {
     addGlobalClass: true
   },
+  
   data: {
     Ofi: false,
     password: '',
@@ -51,10 +52,10 @@ Component({
         success: res => {
           console.log(res)
           if (res.data.length != 0) {
-            console.log(that.data.Ofi)
             this.triggerEvent('loginSuccess', {
               username: that.data.username
             })
+            wx.setStorageSync('username', that.data.username)
             wx.showToast({
               title: '登录成功',
             })

@@ -6,10 +6,13 @@
 	<view class="hanging-part"></view>
 	<border></border>
 	<view class="container">
-		<image src="../../image/badge.png" class="school-badge"></image>
+		<board wx:if="{{ username != '' && (checkSuccess || username == 'admin') }}"></board>
+		<image wx:else src="../../image/badge.png" class="school-badge"></image>
 	</view>
 	<border></border>
 	<view class="container border-bottom">
 		<form wx:if="{{ username == '' }}" bindloginSuccess="loginSuccess"></form>
+		<check wx:if="{{ username != '' && !checkSuccess && username != 'admin' }}" bindcheckSuccess="checkSuccess"></check>
+		<list wx:if="{{ username != '' && (checkSuccess || username == 'admin') }}"></list>
 	</view>
 </view>

@@ -1,6 +1,9 @@
 {
   "usingComponents": {
     "border": "../../component/specialBorder/specialBorder",
+    "check": "../../component/check/check",
+    "list": "../../component/list/list",
+    "board": "../../component/board/board",
     "form": "../../component/form/form"
   }
 }

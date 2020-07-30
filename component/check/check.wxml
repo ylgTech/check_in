@@ -1,0 +1,15 @@
+<!--component/check/check.wxml-->
+<view class="image-container">
+	<block wx:if="{{ filePath == '' }}">
+		<view class="camera-box" bindtap="chooseImage">
+			<text class="cuIcon-cameraadd camera-icon"></text>
+		</view>
+		<view class="hint">拍照打卡</view>
+	</block>
+	<block wx:else>
+		<image src="{{ filePath }}" bindtap="chooseImage"></image>
+		<view>时间：{{ ymd }} {{ hm }}</view>
+		<view bindtap="getLocation">地点：{{ location }}</view>
+		<button class="cu-btn line-blue round shadow" bindtap="check">打卡~</button>
+	</block>
+</view>

@@ -1,9 +1,6 @@
 {
   "pages": [
-    "pages/index/index",
-    "component/form/form",
-    "pages/show/show",
-    "pages/load/load"
+    "pages/index/index"
   ],
   "window": {
     "navigationStyle": "custom"
