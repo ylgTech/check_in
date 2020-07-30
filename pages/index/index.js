@@ -78,8 +78,6 @@ Page({
   },
 
   info: function (e) {
-    this.savaExcel();
-    this.getFileUrl();
     this.copyFileUrl();
   },
 
@@ -118,16 +116,15 @@ Page({
       }
     })
   },
-
   //复制excel文件下载链接
   copyFileUrl() {
-    let that = this
+    let that=this
     wx.setClipboardData({
       data: that.data.fileUrl,
       success(res) {
         wx.getClipboardData({
           success(res) {
-            console.log(res) // data
+            console.log("复制成功",res.data) // data
           }
         })
       }
