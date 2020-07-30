@@ -1,1 +1,56 @@
-/* component/list/list.wxss */
+.scr {
+  width: 86%;
+  height: 100%;
+}
+
+.scr-out {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 630rpx;
+}
+
+.scr-out {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.detail {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.detail-img {
+  height: 50rpx;
+  width: 50rpx;
+}
+
+.btn-delete {
+  background-color: var(--red);
+  color: var(--white);
+  position: relative;
+  border: 0rpx;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  padding: 0 30rpx;
+  font-size: 28rpx;
+  height: 64rpx;
+  line-height: 1;
+  text-align: center;
+  text-decoration: none;
+  overflow: visible;
+  margin-left: initial;
+  transform: translate(0rpx, 0rpx);
+  margin-right: initial;
+}
+.btn-delete-out{
+  display: flex;
+  flex-direction: row-reverse;
+}
+.btn-img{
+  border: solid 1px gray;
+}

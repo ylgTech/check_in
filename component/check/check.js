@@ -15,7 +15,7 @@ Component({
     filePath: '',
     ymd: '',
     hm: '',
-    location: '',
+    location: '点击获取地点',
   }, // 私有数据，可用于模板渲染
 
   lifetimes: {
@@ -142,7 +142,7 @@ Component({
 
     check: function () {
       let that = this
-      if (that.data.ymd == '' || that.data.location == '') {
+      if (that.data.ymd == '' || that.data.location == '点击获取地点') {
         wx.showToast({
           title: '请获取地点~',
           icon: 'none'
