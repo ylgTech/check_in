@@ -19,26 +19,27 @@ Page({
         username: username
       })
     }
-    db.collection('clock_data').where({
-      number:username,
-      ymd:ymd,
-    }).get({
-      success:res=>{
-        if(res.data.length!=0)
-        {
-          that.setData({
-            checkSuccess: true
-          })
+    let checkInfo = wx.getStorageSync('lastCheckDate')
+    console.log(checkInfo)
+    if (checkInfo == ymd) {
+      that.setData({
+        checkSuccess: true
+      })
+    } else {
+      db.collection('clock_data').where({
+        number:username,
+        ymd:ymd,
+      }).get({
+        success:res=>{
+          if(res.data.length!=0)
+          {
+            that.setData({
+              checkSuccess: true
+            })
+          }
         }
-      }
-    })
-    // let checkInfo = wx.getStorageSync('checkInfo')
-    // console.log(checkInfo)
-    // if (checkInfo == ymd) {
-    //   that.setData({
-    //     checkSuccess: true
-    //   })
-    // }
+      })
+    }
   },
 
   loginSuccess: function (e) {
