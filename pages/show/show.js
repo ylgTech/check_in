@@ -21,7 +21,7 @@ Page({
     ymd: '',
     hm: '',
     match_all: [],
-    users:[],
+    users: [],
   },
 
   /**
@@ -75,14 +75,22 @@ Page({
       }
     })
     db.collection('normal_login').get({
-      success:res=>{
+      success: res => {
         that.setData({
           users: res.data.reverse()
         })
       }
     })
   },
-
+  match_detail: function (e) {
+    var id = e.currentTarget.dataset.id; // 获取点击的推文的数组下标
+    var url = this.data.match_all[id]._introduction; // 通过id判断是哪个推文的链接
+    //跳转并传参
+    wx.navigateTo({
+      url: '../../components/show/show?name=match_all&url=' + url,
+    })
+    console.log('开启')
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

@@ -15,9 +15,7 @@
 </view>
 <view class="scr-out" style="top:{{contentHeight*0.24}}px;position: relative;width:{{windowWidth}}px;">
 	<scroll-view scroll-y="true" class="scr">
-		<view id="green">1</view>
-		<view id="red">2</view>
-		<view id="yellow">3</view>
-		<view id="blue">4</view>
+		<view wx:for="{{match_all}}" bindtap="match_detail" data-id='{{index}}'>
+		</view>
 	</scroll-view>
 </view>

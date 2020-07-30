@@ -148,6 +148,7 @@ Page({
                 hm: that.data.hm,
                 img: fileID,
                 location: that.data.location,
+                show:false,
               },
               success: function () {
                 wx.showToast({
