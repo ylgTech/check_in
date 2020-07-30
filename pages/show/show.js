@@ -21,6 +21,7 @@ Page({
     ymd: '',
     hm: '',
     match_all: [],
+    users:[],
   },
 
   /**
@@ -70,6 +71,13 @@ Page({
         }
         that.setData({
           match_all: res.data.reverse()
+        })
+      }
+    })
+    db.collection('normal_login').get({
+      success:res=>{
+        that.setData({
+          users: res.data.reverse()
         })
       }
     })
