@@ -16,12 +16,6 @@ Page({
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo')
   },
-  //事件处理函数
-  bindViewTap: function () {
-    wx.navigateTo({
-      url: '../logs/logs'
-    })
-  },
   onLoad: function () {
     this.getWindowHeight();
     if (app.globalData.userInfo) {
@@ -124,7 +118,7 @@ Page({
           console.log(res)
           if (res.data.length != 0) {
             wx.navigateTo({
-              url: '../load/load?username='+that.data.username+'&Ofi'+that.data.Ofi,
+              url: '../show/show?username='+that.data.username+'&Ofi'+that.data.Ofi,
             })
           } else {
             wx.showToast({

@@ -8,13 +8,15 @@ Page({
    * 页面的初始数据
    */
   data: {
-    Ofi:null,
+    Ofi: null,
     username: '',
     windowHeight: 0,
     statusBarHeight: 0,
     titleBarHeight: 0,
-    contentHeight:0,
+    contentHeight: 0,
     windowWidth: 0,
+    ymd: '',
+    hm: '',
   },
 
   /**
@@ -23,10 +25,11 @@ Page({
   onLoad: function (options) {
     this.setData({
       username: options.username,
-      Ofi:options.Ofi,
+      Ofi: options.Ofi,
     })
     this.getWindowHeight();
     this.getTime();
+    this.jumpTo();
   },
 
   /**
@@ -93,14 +96,14 @@ Page({
         } else {
           titleBarHeight = 48
         }
-        var contentHeight = res.windowHeight-statusBarHeight-titleBarHeight
+        var contentHeight = res.windowHeight - statusBarHeight - titleBarHeight
         console.log('windowHeight: ' + res.windowHeight)
         that.setData({
           windowHeight: res.windowHeight,
           statusBarHeight: statusBarHeight,
           titleBarHeight: titleBarHeight,
           windowWidth: res.windowWidth,
-          contentHeight:contentHeight,
+          contentHeight: contentHeight,
         })
       },
       fail: function (res) {
@@ -110,16 +113,32 @@ Page({
   },
   getTime: function () {
     var that = this
-    var year = util.formatDate_year(new Date());
-    var month = util.formatDate_month(new Date());
-    var day = util.formatDate_day(new Date());
+    var ymd = util.formatTime_ymd(new Date());
+    var hour = util.formatDate_hour(new Date());
+    var minute = util.formatDate_minute(new Date());
+    if (hour[0] < 10) {
+      hour = hour % 10
+    }
+    var hm = hour + ':' + minute
     that.setData({
-      year: year[0],
-      month: month[0],
-      day: day[0],
+      ymd: ymd,
+      hm: hm,
     })
-    console.log(year[0])
-    console.log(month[0])
-    console.log(day[0])
   },
+  jumpTo: function (e) {
+    var that = this
+    db.collection('clock_data').where({
+      ymd: that.data.ymd,
+      number: that.data.username,
+    }).get({
+      success: res => {
+        console.log(res)
+        if (res.data.length == 0) {
+          wx.navigateTo({
+            url: '../load/load?username=' + that.data.username + '&Ofi' + that.data.Ofi,
+          })
+        }
+      },
+    })
+  }
 })

@@ -8,6 +8,26 @@ const formatTime = date => {
 
   return [year, month, day].map(formatNumber).join('/') + ' ' + [hour, minute, second].map(formatNumber).join(':')
 }
+const formatTime_ymd = date => {
+  const year = date.getFullYear()
+  const month = date.getMonth() + 1
+  const day = date.getDate()
+  const hour = date.getHours()
+  const minute = date.getMinutes()
+  const second = date.getSeconds()
+
+  return [year, month, day].map(formatNumber).join('/')
+}
+const formatTime_hm = date => {
+  const year = date.getFullYear()
+  const month = date.getMonth() + 1
+  const day = date.getDate()
+  const hour = date.getHours()
+  const minute = date.getMinutes()
+  const second = date.getSeconds()
+
+  return [hour, minute].map(formatNumber).join(':')
+}
 const formatDate_month = date => {
   const year = date.getFullYear()
   const month = date.getMonth() + 1
@@ -64,7 +84,8 @@ const formatNumber = n => {
 }
 
 module.exports = {
-  formatTime: formatTime,
+  formatTime_ymd: formatTime_ymd,
+  formatTime_hm: formatTime_hm,
   formatDate_month: formatDate_month,
   formatDate_day: formatDate_day,
   formatDate_year:formatDate_year,
