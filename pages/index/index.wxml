@@ -1,7 +1,55 @@
-<cu-custom bgColor="bg-blue cu" isBack="{{false}}">
-	<view slot="content">粉冶院打卡小程序</view>
-</cu-custom>
-<image class='background' style="height:{{windowHeight-statusBarHeight-titleBarHeight}}px" src="/image/bgimge.png" mode="aspectFill"></image>
+<view class="body">
+	<cu-custom bgColor="navi-color" isBack="{{false}}">
+		<view slot="content">粉冶院打卡小程序</view>
+	</cu-custom>
+	<view class="bar-to-hang"></view>
+	<view class="hanging-part"></view>
+	<view class="cro-bar box-shadow">
+		<view class="border-lb"></view>
+		<view class="cro-main"></view>
+		<view class="border-rb"></view>
+	</view>
+	<view class="cro-bar box-shadow">
+		<view class="border-lt"></view>
+		<view class="cro-main top-dashed"></view>
+		<view class="border-rt"></view>
+	</view>
+	<view class="container box-shadow">
+		<image src="../../image/badge.png" class="school-badge"></image>
+	</view>
+	<view class="cro-bar box-shadow">
+		<view class="border-lb"></view>
+		<view class="cro-main"></view>
+		<view class="border-rb"></view>
+	</view>
+	<view class="cro-bar box-shadow">
+		<view class="border-lt"></view>
+		<view class="cro-main top-dashed"></view>
+		<view class="border-rt"></view>
+	</view>
+	<view class="container box-shadow border-bottom">
+		<view class="form">
+			<view class="input-box">
+				<text>账号：</text>
+				<input placeholder="请输入账号" value="{{ username }}" bindblur="mess_change"></input>
+			</view>
+			<view class="input-box">
+				<text>密码：</text>
+				<input placeholder="请输入密码" value="{{ password }}" bindblur="mess_change2" password="true"></input>
+			</view>
+			<checkbox-group class="checkbox-container" bindchange="checkboxChange">
+				<checkbox value="Ofi" checked="{{ false }}" class="cb blue"></checkbox>
+				<view class="title">以管理员身份进入</view>
+			</checkbox-group>
+			<view class="log" bindtap="submit">
+				<image src="/image/log.png" style="height:60px;width:60px;"></image>
+			</view>
+		</view>
+	</view>
+</view>
+
+
+<!-- <image class='background' style="height:{{windowHeight-statusBarHeight-titleBarHeight}}px" src="/image/bgimge.png" mode="aspectFill"></image>
 <view>
 	<image class="bg" style="height:{{windowHeight-statusBarHeight-titleBarHeight}}px" src="/image/tap.png"></image>
 	<image class="bg1" style="height:{{windowHeight-statusBarHeight-titleBarHeight}}px" src="/image/logo.png"></image>
@@ -22,4 +70,4 @@
 	<view  class="log" bindtap="submit">
 		<image src="/image/log.png" style="height:60px;width:60px;"></image>
 	</view>
-</view>
+</view> -->

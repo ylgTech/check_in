@@ -1,74 +1,49 @@
-.background {
-  width: 100%;
-  height: 100%;
-  position: fixed;
-  background-size: 100% 100%;
-  z-index: -1;
-}
-.bg{
-  width: 100%;
-  height: 100%;
-  position: fixed;
-  background-size: 100% 100%;
-  z-index: 0;
-}
-.bg1{
-  width: 100%;
-  height: 100%;
-  position: fixed;
-  background-size: 100% 100%;
-  z-index: 0;
-}
-.cu{
-  color: white !important;
-  background-color: #35a6df !important;
-}
-
-.login{
-  position: relative;
-  left: 10%;
+.form {
+  width: 90%;
+  left: 5%;
   border-radius: 30rpx;
 }
-.container-num{
-  background-color: #f1f1f1;
-  left: 7.5%;
+
+.input-box {
   width: 85%;
-  height: 35%;
-  position: relative;
+  height: 90rpx;
+  background-color: #f1f1f1;
+  margin-left: 7.5%;
   border-radius: 50rpx 50rpx 50rpx 50rpx;
   display: flex;
   flex-direction: row;
-  flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  margin-bottom: 3%;
+  margin-bottom: 30rpx;
 }
-.container-name{
-  background-color: #f1f1f1;
-  left: 7.5%;
-  width: 85%;
-  height: 35%;
-  position: relative;
-  border-radius: 50rpx 50rpx 50rpx 50rpx;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
+
+.input-title {
+  width: 150rpx;
 }
-.cu-form-group{
+
+.input {
+  width: 300rpx;
+}
+
+.checkbox-container {
   justify-content: start !important;
-  padding-left: 67rpx;
+  margin-left: 7.5%;
+  display: flex;
+  align-items: center;
+  margin-bottom: 40rpx;
 }
-.cu-form-group .title{
-  font-size:26rpx;
+
+.checkbox-container .title {
+  font-size: 26rpx;
   margin-right: 5rpx;
   color: gray;
 }
-.cb{
-  transform: scale(0.6,0.6);
+
+.cb {
+  transform: scale(0.6, 0.6);
 }
-.log{
+
+.log {
   display: flex;
   justify-content: center;
   align-content: center;
