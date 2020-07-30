@@ -64,12 +64,8 @@ Component({
         filePath, //临时路径
         success: res => {
           console.log('[上传图片] 成功：', res)
-          that.setData({
-            bigImg: res.fileID, //云存储图片路径,可以把这个路径存到集合，要用的时候再取出来
-          });
           let fileID = res.fileID;
           //把图片存到users集合表
-          const db = wx.cloud.database();
           db.collection("clock_data").add({
             data: {
               number: that.data.username,
@@ -83,6 +79,7 @@ Component({
               wx.showToast({
                 title: '打卡成功！',
               })
+              wx.setStorageSync('lastCheckDate', that.data.ymd)
               that.triggerEvent('checkSuccess', {})
             },
             fail: function () {
@@ -124,7 +121,7 @@ Component({
       })
     },
 
-    getLocation(e) {
+    getLocation() {
       var _this = this;
       qqmapsdk.reverseGeocoder({
         location: '',
