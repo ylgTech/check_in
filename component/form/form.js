@@ -6,7 +6,6 @@ Component({
   },
   
   data: {
-    Ofi: false,
     password: '',
     username: '',
   }, // 私有数据，可用于模板渲染
@@ -52,6 +51,7 @@ Component({
         success: res => {
           console.log(res)
           if (res.data.length != 0) {
+            getApp().globalData.username = that.data.username
             this.triggerEvent('loginSuccess', {
               username: that.data.username
             })
@@ -75,5 +75,4 @@ Component({
       })
     }
   }
-
 })

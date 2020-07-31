@@ -1,7 +1,10 @@
 const db = wx.cloud.database()
 
-
 Component({
+  options: {
+    addGlobalClass: true
+  },
+  
   data: {
     username: '',
     match_all: [],
@@ -11,18 +14,15 @@ Component({
     // 生命周期函数，可以为函数，或一个在methods段中定义的方法名
     attached: function () {
       let that = this
-      let username = wx.getStorageSync('username')
-      console.log(username)
-      if (username) {
-        that.setData({
-          username: username
-        })
-      }
+      this.setData({
+        username: getApp().globalData.username,
+      })
       wx.showLoading({
         title: '加载中~',
       })
+      let number = that.data.username == 'admin' ? undefined : that.data.username
       db.collection('clock_data').where({
-        number: that.data.username,
+        number: number,
       }).orderBy('ymd', 'desc').get({
         success: res => {
           console.log(res)

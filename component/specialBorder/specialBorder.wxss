@@ -12,7 +12,7 @@
 }
 
 .top-dashed {
-  border-top: dashed grey 2rpx;
+  border-top: dashed rgba(0, 0, 0, 0.4) 2rpx;
 }
 
 /* 左上 */

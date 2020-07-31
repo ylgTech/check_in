@@ -1,5 +1,5 @@
 var util = require('../../utils/util.js');
-var QQMapWX = require('../../utils/qqmap-wx-jssdk.js');
+var QQMapWX = require('../../utils/qqmap-wx-jssdk.min.js');
 const db = wx.cloud.database()
 var qqmapsdk = new QQMapWX({
   key: 'ZVDBZ-VBUHQ-CRJ55-GRU7W-FDACJ-B4BMW'
@@ -21,14 +21,9 @@ Component({
   lifetimes: {
     // 生命周期函数，可以为函数，或一个在methods段中定义的方法名
     attached: function () {
-      let that = this
-      let username = wx.getStorageSync('username')
-      console.log(username)
-      if (username) {
-        that.setData({
-          username: username
-        })
-      }
+      this.setData({
+        username: getApp().globalData.username,
+      })
       this.getTime();
     },
     moved: function () {},

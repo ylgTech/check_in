@@ -1,13 +1,12 @@
 //index.js
 //获取应用实例
-var util = require('../../utils/util.js');
-const db = wx.cloud.database()
+const app = getApp()
+const util = require('../../utils/util.js');
 
 Page({
   data: {
     username: '',
     checkSuccess: false,
-    fileUrl: '',
   },
 
   onLoad: function () {
@@ -16,6 +15,7 @@ Page({
     let ymd = util.formatTime_ymd(new Date());
     console.log(username)
     if (username) {
+      app.globalData.username = username
       that.setData({
         username: username
       })
@@ -27,6 +27,7 @@ Page({
         checkSuccess: true
       })
     } else {
+      const db = wx.cloud.database()
       db.collection('clock_data').where({
         number: username,
         ymd: ymd,

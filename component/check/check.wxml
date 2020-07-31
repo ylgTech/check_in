@@ -8,15 +8,15 @@
 	</block>
 </view>
 <view wx:if="{{ filePath != '' }}" class="cu-card case">
-	<view class="cu-item shadow">
+	<view class="cu-item">
 		<view class="image">
 			<image src="{{ filePath }}" mode="widthFix" bindtap="chooseImage"></image>
 			<view class="cu-bar bg-shadeBottom" bindtap="getLocation">
 				<text class="text-cut">{{ location }}</text>
 			</view>
 		</view>
-		<view class="cu-list menu-avatar" >
-			<view class="cu-item shadow" style="box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.08);">
+		<view class="cu-list menu-avatar">
+			<view class="cu-item" style="background: rgba(0,0,0,0.1);">
 				<view class="cu-avatar round lg" style="background-image:url(https://636c-clock-ye8c9-1302754083.tcb.qcloud.la/%E7%B3%BB%E7%BB%9F%E5%9B%BE%E6%A0%87/avatar.jpg?sign=ca3c0151dbb3661c9aa901bedf0a2c78&t=1596119858);"></view>
 				<view class="content flex-sub">
 					<view class="text-grey">{{ username }}</view>
