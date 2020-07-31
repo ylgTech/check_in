@@ -1,18 +1,19 @@
-<!-- <view class="scr-out"> -->
-	<!-- <scroll-view scroll-y="true" class="scr"> -->
-		<view wx:for="{{ list }}" wx:key="index" style="width: 675rpx">
 
-
-			<view class="cu-bar">
-				<view class="action" style="font-weight: bold;">
-					<text class="cuIcon-titles" style="color: #35a6df;"></text>{{item.ymd}} {{item.hm}}
-				</view>
-				<view class="action text-sm" style="color: rgba(0, 0, 0, 0.64);" data-id='{{index}}' bindtap="match_detail" hover-class="none">
-					<text class="margin-xs">更多</text>
-					<text class="cuIcon-{{ item.show ? 'unfold' : 'right' }} text-gray"></text>
-				</view>
+<view wx:for="{{ list }}" wx:key="index" style="width: 675rpx">
+	<border style="width: 675rpx;"></border>
+	<view class="container">
+		<view class="cu-bar" style="width: 675rpx">
+			<view class="action" style="font-weight: bold;">
+				<text class="cuIcon-titles" style="color: #35a6df;"></text>{{item.ymd}} {{item.hm}}
 			</view>
-			<block wx:if="{{item.show}}">
+			<view class="action text-sm" style="color: rgba(0, 0, 0, 0.64);" data-id='{{index}}' bindtap="match_detail" hover-class="none">
+				<text class="margin-xs">更多</text>
+				<text class="cuIcon-{{ item.show ? 'unfold' : 'right' }} text-gray"></text>
+			</view>
+		</view>
+		<block wx:if="{{item.show}}">
+			<view style="width: 675rpx">
+
 				<view class="cu-card case">
 					<view class="cu-item">
 						<view class="image">
@@ -32,12 +33,13 @@
 						</view>
 					</view>
 				</view>
-				<view class="btn-box">
-					<button wx:if="{{username=='admin'}}" data-id='{{index}}' class="cu-btn line-red round shadow" bindtap="delete">
-						打卡存疑，我要删除
-					</button>
-				</view>
-			</block>
-		</view>
-	<!-- </scroll-view>
-</view> -->
+			</view>
+			<view class="btn-box">
+				<button wx:if="{{username=='admin'}}" data-id='{{index}}' class="cu-btn line-red round shadow" bindtap="delete">
+					打卡存疑，我要删除
+				</button>
+			</view>
+		</block>
+	</view>
+</view>
+<view class="footer"></view>

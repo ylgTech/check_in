@@ -9,12 +9,14 @@
 		<board wx:if="{{ username != '' && (checkSuccess || username == 'admin') }}" class="board"></board>
 		<image wx:else src="../../image/badge.png" class="school-badge"></image>
 	</view>
-	<border style="width: 100%;"></border>
-	<view class="container border-bottom">
-		<form wx:if="{{ username == '' }}" bindloginSuccess="loginSuccess"></form>
-		<check wx:if="{{ username != '' && !checkSuccess && username != 'admin' }}" bindcheckSuccess="checkSuccess"></check>
-		<list wx:if="{{ username != '' && (checkSuccess || username == 'admin') }}" bindUpdateDays="updateDays"></list>
-	</view>
+	<list wx:if="{{ username != '' && (checkSuccess || username == 'admin') }}" bindUpdateDays="updateDays"></list>
+	<block wx:else>
+		<border style="width: 100%;"></border>
+		<view class="container border-bottom">
+			<form wx:if="{{ username == '' }}" bindloginSuccess="loginSuccess"></form>
+			<check wx:if="{{ username != '' && !checkSuccess && username != 'admin' }}" bindcheckSuccess="checkSuccess"></check>
+		</view>
+	</block>
 </view>
 <view class="footer">
 	<view class="footer-hint" wx:if="{{ username != '' && !checkSuccess && username != 'admin' }}">请同意获取位置信息授权，否则无法打卡</view>
