@@ -7,7 +7,7 @@ Component({
   
   data: {
     username: '',
-    match_all: [],
+    list: [],
   }, // 私有数据，可用于模板渲染
 
   lifetimes: {
@@ -27,7 +27,7 @@ Component({
         success: res => {
           console.log(res)
           that.setData({
-            match_all: res.data
+            list: res.data
           })
           that.triggerEvent('UpdateDays', {
             days: res.data.length
@@ -36,6 +36,7 @@ Component({
         fail: res => {
           wx.showToast({
             title: '请检查网络~',
+            icon: 'none'
           })
         },
         complete: res => {
@@ -51,34 +52,35 @@ Component({
     match_detail: function (e) {
       var that = this
       var id = e.currentTarget.dataset.id; // 获取点击的推文的数组下标
-      that.data.match_all[id].show = !that.data.match_all[id].show
+      that.data.list[id].show = !that.data.list[id].show
       that.setData({
-        match_all: that.data.match_all
+        list: that.data.list
       })
-      console.log(that.data.match_all[id].show)
     },
+
     delete: function (e) {
       var that = this
+      wx.showLoading({
+        title: '删除中~',
+      })
       var id = e.currentTarget.dataset.id; // 获取点击的推文的数组下标
-      var _id = that.data.match_all[id]._id; // 通过id判断是哪个推文的链接
+      var _id = that.data.list[id]._id; // 通过id判断是哪个推文的链接
       db.collection('clock_data').doc(_id).remove({
         success: res => {
           wx.showToast({
             title: '删除成功',
             icon: 'success',
           })
-          db.collection('clock_data').where({
-            number: that.data.username,
-          }).get({
-            success: res => {
-              console.log(res)
-              that.setData({
-                match_all: res.data.reverse()
-              })
-            }
+          that.data.list.splice(id, 1)
+          that.setData({
+            list: that.data.list
+          })
+          that.triggerEvent('UpdateDays', {
+            days: that.data.list.length
           })
         },
         fail: err => {
+          console.log(err)
           wx.showToast({
             title: '删除失败',
             icon: 'none',

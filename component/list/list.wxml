@@ -1,38 +1,43 @@
-<view class="scr-out">
-	<scroll-view scroll-y="true" class="scr">
-		<view wx:for="{{match_all}}" wx:key="index">
-			<view class="detail">
-				<view class="detail-word">{{item.ymd}}-{{item.hm}} {{item.location}}</view>
-				<image class="detail-img" bindtap="match_detail" data-id='{{index}}' src="{{item.show ? 'https://636c-clock-ye8c9-1302754083.tcb.qcloud.la/%E7%B3%BB%E7%BB%9F%E5%9B%BE%E6%A0%87/open.png?sign=5b6873865ae311b94036dc593733e812&t=1596080337': 'https://636c-clock-ye8c9-1302754083.tcb.qcloud.la/%E7%B3%BB%E7%BB%9F%E5%9B%BE%E6%A0%87/close.png?sign=d5bf7ede161e5d945da7fb205cb1f774&t=1596080324'}}"></image>
+<!-- <view class="scr-out"> -->
+	<!-- <scroll-view scroll-y="true" class="scr"> -->
+		<view wx:for="{{ list }}" wx:key="index" style="width: 675rpx">
+
+
+			<view class="cu-bar">
+				<view class="action" style="font-weight: bold;">
+					<text class="cuIcon-titles" style="color: #35a6df;"></text>{{item.ymd}} {{item.hm}}
+				</view>
+				<view class="action text-sm" style="color: rgba(0, 0, 0, 0.64);" data-id='{{index}}' bindtap="match_detail" hover-class="none">
+					<text class="margin-xs">更多</text>
+					<text class="cuIcon-{{ item.show ? 'unfold' : 'right' }} text-gray"></text>
+				</view>
 			</view>
-			<view wx:if="{{item.show}}">
-
-
-				<view class="cu-item">
-					<view class="image">
-						<image src="{{ item.img }}" mode="widthFix" bindtap="chooseImage"></image>
-						<view class="cu-bar bg-shadeBottom" bindtap="getLocation">
-							<text class="text-cut">{{ location }}</text>
+			<block wx:if="{{item.show}}">
+				<view class="cu-card case">
+					<view class="cu-item">
+						<view class="image">
+							<image src="{{ item.img }}" mode="aspectFit"></image>
+							<view class="cu-bar bg-shadeBottom">
+								<text class="text-cut">{{ item.location }}</text>
+							</view>
 						</view>
-					</view>
-					<view class="cu-list menu-avatar">
-						<view class="cu-item" style="background: rgba(0,0,0,0.1);">
-							<view class="cu-avatar round lg" style="background-image:url(https://636c-clock-ye8c9-1302754083.tcb.qcloud.la/%E7%B3%BB%E7%BB%9F%E5%9B%BE%E6%A0%87/avatar.jpg?sign=ca3c0151dbb3661c9aa901bedf0a2c78&t=1596119858);"></view>
-							<view class="content flex-sub">
-								<view class="text-grey">{{ item.number }}</view>
-								<view class="text-gray text-sm flex justify-between">{{ item.ymd }} {{ item.hm }}</view>
+						<view class="cu-list menu-avatar">
+							<view class="cu-item" style="background: rgba(0,0,0,0.1);">
+								<view class="cu-avatar round lg" style="background-image:url(https://636c-clock-ye8c9-1302754083.tcb.qcloud.la/%E7%B3%BB%E7%BB%9F%E5%9B%BE%E6%A0%87/avatar.jpg?sign=ca3c0151dbb3661c9aa901bedf0a2c78&t=1596119858);"></view>
+								<view class="content flex-sub">
+									<view class="text-grey">{{ item.number }}</view>
+									<view class="text-gray text-sm flex justify-between">{{ item.ymd }} {{ item.hm }}</view>
+								</view>
 							</view>
 						</view>
 					</view>
 				</view>
-
-				<!-- <image class="btn-img" src="{{item.img}}"></image> -->
-				<view class="btn-delete-out">
-					<button wx:if="{{username=='admin'}}" data-id='{{index}}' class="btn-delete" bindtap="delete">
-						删除
+				<view class="btn-box">
+					<button wx:if="{{username=='admin'}}" data-id='{{index}}' class="cu-btn line-red round shadow" bindtap="delete">
+						打卡存疑，我要删除
 					</button>
 				</view>
-			</view>
+			</block>
 		</view>
-	</scroll-view>
-</view>
+	<!-- </scroll-view>
+</view> -->
