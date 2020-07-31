@@ -1,5 +1,5 @@
 <view class="body" style="padding-top: {{ CustomBar }}px">
-	<cu-custom bgColor="navi-color" isBack="{{false}}" style="position: fixed; left: 0; top: 0;">
+	<cu-custom bgColor="navi-color" isBack="{{false}}" style="position: fixed; left: 0; top: 0; z-Index: 999;">
 		<view slot="content">粉冶院自习打卡</view>
 	</cu-custom>
 	<view class="bar-to-hang"></view>

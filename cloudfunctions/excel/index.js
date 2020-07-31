@@ -11,28 +11,58 @@ const xlsx = require('node-xlsx');
 // 云函数入口函数
 exports.main = async(event, context) => {
   try {
-    let {userdata} = event
+    const db = cloud.database()
+    let specific = await db.collection('clock_data')
+    .aggregate()
+    .project({
+      _id: 0,
+      hm: 1,
+      ymd: 1,
+      location: 1,
+      number: 1,
+    })
+    .end()
+    let specificList = specific.list
+
+    let rank = await db.collection('clock_data')
+    .aggregate().sortByCount('$number').end()
+    let rankList = rank.list
+
+    console.log(rank)
     
     //1,定义excel表格名
-    let dataCVS = 'test.xlsx'
-    //2，定义存储数据的
-    let alldata = [];
-    let row = ['具体时间', '具体日期', '打卡地址', '用户名']; //表属性
-    alldata.push(row);
+    let dataCVS = '粉冶院自习打卡表.xlsx'
 
-    for (let key in userdata) {
+    //2，定义存储数据的
+    let specificData = [];
+    let specificColumn = ['具体时间', '具体日期', '打卡地址', '组别']; //表属性
+    specificData.push(specificColumn);
+
+    for (let key in specificList) {
       let arr = [];
-      arr.push(userdata[key].hm);
-      arr.push(userdata[key].ymd);
-      arr.push(userdata[key].location);
-      arr.push(userdata[key].number);
-      alldata.push(arr)
+      arr.push(specificList[key].hm);
+      arr.push(specificList[key].ymd);
+      arr.push(specificList[key].location);
+      arr.push(specificList[key].number);
+      specificData.push(arr)
     }
+
+    let rankData = [];
+    let rankColumn = ['组别', '总计打卡数']
+    rankData.push(rankColumn)
+    for (let i in rankList) {
+      rankData.push([rankList[i]._id, rankList[i].count])
+    }
+
     //3，把数据保存到excel里
     var buffer = await xlsx.build([{
-      name: "打卡数据",
-      data: alldata
+      name: "排名数据",
+      data: rankData
+    },{
+      name: "详细数据",
+      data: specificData
     }]);
+
     //4，把excel文件保存到云存储里
     return await cloud.uploadFile({
       cloudPath: dataCVS,
@@ -40,7 +70,7 @@ exports.main = async(event, context) => {
     })
 
   } catch (e) {
-    console.error(e)
+    console.log(e)
     return e
   }
 }

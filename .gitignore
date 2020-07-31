@@ -1,0 +1,8 @@
+﻿忽略字体、psd文件
+*.psd
+*.otf
+
+忽略npm包
+cloudfunctions/excel/node_modules/
+
+*.pdf
