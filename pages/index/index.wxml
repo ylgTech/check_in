@@ -1,22 +1,22 @@
-<view class="body">
-	<cu-custom bgColor="navi-color" isBack="{{false}}">
+<view class="body" style="padding-top: {{ CustomBar }}px">
+	<cu-custom bgColor="navi-color" isBack="{{false}}" style="position: fixed; left: 0; top: 0;">
 		<view slot="content">粉冶院自习打卡</view>
 	</cu-custom>
 	<view class="bar-to-hang"></view>
 	<view class="hanging-part"></view>
-	<border></border>
+	<border style="width: 100%;"></border>
 	<view class="container">
 		<board wx:if="{{ username != '' && (checkSuccess || username == 'admin') }}" class="board"></board>
 		<image wx:else src="../../image/badge.png" class="school-badge"></image>
 	</view>
-	<border></border>
+	<border style="width: 100%;"></border>
 	<view class="container border-bottom">
 		<form wx:if="{{ username == '' }}" bindloginSuccess="loginSuccess"></form>
 		<check wx:if="{{ username != '' && !checkSuccess && username != 'admin' }}" bindcheckSuccess="checkSuccess"></check>
 		<list wx:if="{{ username != '' && (checkSuccess || username == 'admin') }}" bindUpdateDays="updateDays"></list>
 	</view>
 </view>
-	<view class="footer">
-		<view class="footer-hint" wx:if="{{ username != '' && !checkSuccess && username != 'admin' }}">请同意获取位置信息授权，否则无法打卡</view>
-		<view bindtap="info" wx:if="{{ username == 'admin' }}" class="print-text">打印小组打卡信息</view>
-	</view>
+<view class="footer">
+	<view class="footer-hint" wx:if="{{ username != '' && !checkSuccess && username != 'admin' }}">请同意获取位置信息授权，否则无法打卡</view>
+	<view bindtap="info" wx:if="{{ username == 'admin' }}" class="print-text">打印小组打卡信息</view>
+</view>

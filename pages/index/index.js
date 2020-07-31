@@ -17,7 +17,8 @@ Page({
     if (username) {
       app.globalData.username = username
       that.setData({
-        username: username
+        username: username,
+        CustomBar: getApp().globalData.CustomBar
       })
     }
     let checkInfo = wx.getStorageSync('lastCheckDate')
