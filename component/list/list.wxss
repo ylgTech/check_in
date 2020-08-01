@@ -17,12 +17,12 @@
   margin-bottom: 20rpx;
 }
 
-.btn-img{
+.btn-img {
   border: solid 1px gray;
 }
 
-.detail-word{
-  color:#6b6b6b;
+.detail-word {
+  color: #6b6b6b;
   font-size: 35rpx;
 }
 
@@ -31,4 +31,12 @@
   border-bottom-left-radius: 20rpx;
   border-bottom-right-radius: 20rpx;
   box-shadow: 0px 4px 6px rgba(163, 124, 124, 0.3);
+}
+
+.cu-card>.cu-item {
+  margin: 0rpx;
+  margin-left: 30rpx;
+  margin-right: 30rpx;
+  margin-top: -67rpx;
+  margin-bottom: 30rpx;
 }

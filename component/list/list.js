@@ -4,9 +4,10 @@ Component({
   options: {
     addGlobalClass: true
   },
-  
+
   data: {
     username: '',
+    all: false,
     list: [],
   }, // 私有数据，可用于模板渲染
 
@@ -49,6 +50,60 @@ Component({
   },
 
   methods: {
+    showall: function (e) {
+      var that = this
+      var all = !that.data.all
+      that.setData({
+        all: all,
+      })
+      let number = undefined
+      db.collection('clock_data').where({
+        number: number,
+      }).orderBy('ymd', 'desc').get({
+        success: res => {
+          console.log(res)
+          that.setData({
+            list: res.data
+          })
+        },
+        fail: res => {
+          wx.showToast({
+            title: '请检查网络~',
+            icon: 'none'
+          })
+        },
+        complete: res => {
+          wx.hideLoading({})
+        }
+      })
+    },
+    showone: function (e) {
+      var that = this
+      var all = !that.data.all
+      that.setData({
+        all: all,
+      })
+      let number = that.data.username
+      db.collection('clock_data').where({
+        number: number,
+      }).orderBy('ymd', 'desc').get({
+        success: res => {
+          console.log(res)
+          that.setData({
+            list: res.data
+          })
+        },
+        fail: res => {
+          wx.showToast({
+            title: '请检查网络~',
+            icon: 'none'
+          })
+        },
+        complete: res => {
+          wx.hideLoading({})
+        }
+      })
+    },
     match_detail: function (e) {
       var that = this
       var id = e.currentTarget.dataset.id; // 获取点击的推文的数组下标

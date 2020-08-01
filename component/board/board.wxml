@@ -1,8 +1,37 @@
-<view class="num">{{ username }}</view>
+<view class="num" bindtap="showModal" data-target="DialogModal1">{{ username }}</view>
 <view class="day">
-	<view class="text">{{ username == 'admin' ? '现已有' : '已坚持' }}</view>
+	<view class="text" style="font-size:{{username == 'admin' ? '33rpx;' : '40rpx;'}}">{{ username == 'admin' ? '现已有' : '已坚持' }}</view>
+	<view wx:if="{{username=='admin'}}" class="num1">{{ days[3] }}</view>
 	<view class="num1">{{ days[2] }}</view>
 	<view class="num1">{{ days[1] }}</view>
 	<view class="num1">{{ days[0] }}</view>
-	<view class="text">{{ username == 'admin' ? '次' : '天' }}打卡</view>
+	<view class="text" style="font-size:{{username == 'admin' ? '33rpx;' : '40rpx;'}}">{{ username == 'admin' ? '次' : '天' }}打卡</view>
+</view>
+<view class="cu-modal {{modalName=='DialogModal1'?'show':''}}">
+	<view class="cu-dialog">
+		<view class="cu-bar bg-white justify-end">
+			<view class="content">修改密码</view>
+			<view class="action" bindtap="hideModal">
+				<text class="cuIcon-close text-red"></text>
+			</view>
+		</view>
+		<view class="padding-xl">
+			<view class="form">
+				<view class="input-box">
+					<text>原密码：</text>
+					<input placeholder="请输入密码" value="{{ password_old }}" bindblur="inputUsername"></input>
+				</view>
+				<view class="input-box">
+					<text>修改密码：</text>
+					<input placeholder="请输入密码" value="{{ password_new }}" bindblur="inputPassword"></input>
+				</view>
+			</view>
+		</view>
+		<view class="cu-bar bg-white justify-end">
+			<view class="action">
+				<button class="cu-btn line-fkblue text-fkblue" bindtap="hideModal">取消</button>
+				<button class="cu-btn bg-fkblue margin-left" bindtap="password">确定</button>
+			</view>
+		</view>
+	</view>
 </view>

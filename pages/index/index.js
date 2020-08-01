@@ -6,6 +6,10 @@ const util = require('../../utils/util.js');
 Page({
   data: {
     username: '',
+    windowHeight: 0,
+    statusBarHeight: 0,
+    titleBarHeight: 0,
+    mapHeight: 0,
     checkSuccess: false,
   },
 
@@ -14,6 +18,7 @@ Page({
     let username = wx.getStorageSync('username')
     let ymd = util.formatTime_ymd(new Date());
     console.log(username)
+    that.getWindowHeight();
     if (username) {
       app.globalData.username = username
       that.setData({
@@ -53,6 +58,37 @@ Page({
   checkSuccess: function () {
     this.setData({
       checkSuccess: true
+    })
+  },
+
+  /**
+   * 获取页面的高度
+   */
+  getWindowHeight: function () {
+    var that = this
+    wx.getSystemInfo({
+      success: function (res) {
+        console.log(res)
+        var statusBarHeight = res.statusBarHeight;
+        var titleBarHeight;
+        // 确定titleBar高度（区分安卓和苹果
+        if (wx.getSystemInfoSync().system.indexOf('iOS') > -1) {
+          titleBarHeight = 44
+        } else {
+          titleBarHeight = 48
+        }
+        var contentHeight = res.windowHeight - statusBarHeight - titleBarHeight
+        console.log('windowHeight: ' + res.windowHeight)
+        that.setData({
+          windowHeight: res.windowHeight,
+          statusBarHeight: statusBarHeight,
+          titleBarHeight: titleBarHeight,
+          mapHeight: contentHeight - 32,  // menuBar: 32px
+        })
+      },
+      fail: function (res) {
+        console.log(res)
+      }
     })
   },
 

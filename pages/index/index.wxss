@@ -37,7 +37,7 @@
 }
 
 .school-badge {
-  width: 193rpx;
+  width: 371rpx;
   height: 186rpx;
 }
 
@@ -64,4 +64,14 @@
 .footer-hint {
   color: rgba(0, 0, 0, 0.3);
   line-height: 1em;
+}
+.cu-bar .content{
+  margin-left: 40rpx;
+}
+
+.inner-text {
+  margin-right: 8rpx;
+}
+.cu-bar.fixed, .nav.fixed {
+  width: 106%;
 }
