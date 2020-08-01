@@ -19,6 +19,8 @@
   justify-content: center;
   height: 175rpx;
   color: #35a6df;
+  margin: 10rpx;
+
 }
 
 .num1 {
