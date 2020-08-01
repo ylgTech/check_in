@@ -30,9 +30,6 @@ Component({
           that.setData({
             list: res.data
           })
-          that.triggerEvent('UpdateDays', {
-            days: res.data.length
-          })
         },
         fail: res => {
           wx.showToast({
@@ -130,9 +127,7 @@ Component({
           that.setData({
             list: that.data.list
           })
-          that.triggerEvent('UpdateDays', {
-            days: that.data.list.length
-          })
+          that.triggerEvent('DescTotal', {})
         },
         fail: err => {
           console.log(err)
