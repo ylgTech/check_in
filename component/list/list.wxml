@@ -2,17 +2,8 @@
 <view wx:for="{{ list }}" wx:key="index" style="width: 675rpx">
 	<border style="width: 675rpx;"></border>
 	<view class="container">
-		<view class="cu-bar" style="width: 675rpx">
-			<view class="action" style="font-weight: bold;">
-				<text class="cuIcon-titles" style="color: #35a6df;"></text>{{item.ymd}} {{item.hm}}
-			</view>
-			<view class="action text-sm" style="color: rgba(0, 0, 0, 0.64);" data-id='{{index}}' bindtap="match_detail" hover-class="none">
-				<text class="margin-xs">更多</text>
-				<text class="cuIcon-{{ item.show ? 'unfold' : 'right' }} text-gray"></text>
-			</view>
-		</view>
-		<block wx:if="{{item.show}}">
-			<view style="width: 675rpx">
+		<block wx:if="{{true}}">
+			<view style="width: 675rpx; margin-top: -20rpx;">
 
 				<view class="cu-card case">
 					<view class="cu-item">

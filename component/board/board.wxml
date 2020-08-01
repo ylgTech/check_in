@@ -1,8 +1,6 @@
 <view class="num">{{ username }}</view>
 <view class="day">
 	<view class="text">{{ username == 'admin' ? '现已有' : '已坚持' }}</view>
-	<view class="num1">{{ days[2] }}</view>
-	<view class="num1">{{ days[1] }}</view>
-	<view class="num1">{{ days[0] }}</view>
+	<view class="num1" wx:for="{{ days }}" wx:key='item'>{{ item }}</view>
 	<view class="text">{{ username == 'admin' ? '次' : '天' }}打卡</view>
 </view>

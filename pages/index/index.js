@@ -58,9 +58,9 @@ Page({
     })
   },
 
-  updateDays: function (e) {
+  descTotal: function (e) {
     const board = this.selectComponent('.board');
-    board.updateDays(e.detail.days)
+    board.descTotal()
   },
 
   //把数据保存到excel里，并把excel保存到云存储

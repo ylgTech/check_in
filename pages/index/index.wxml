@@ -1,6 +1,6 @@
 <view class="body" style="padding-top: {{ CustomBar }}px">
 	<cu-custom bgColor="navi-color" isBack="{{false}}" style="position: fixed; left: 0; top: 0; z-Index: 999;">
-		<view slot="content">粉冶院自习打卡</view>
+		<view slot="content">粉末冶金研究院</view>
 	</cu-custom>
 	<view class="bar-to-hang"></view>
 	<view class="hanging-part"></view>
@@ -9,12 +9,12 @@
 		<board wx:if="{{ username != '' && (checkSuccess || username == 'admin') }}" class="board"></board>
 		<image wx:else src="../../image/badge.png" class="school-badge"></image>
 	</view>
-	<list wx:if="{{ username != '' && (checkSuccess || username == 'admin') }}" bindUpdateDays="updateDays"></list>
+	<list wx:if="{{ username != '' && (checkSuccess || username == 'admin') }}" bindDescTotal="descTotal"></list>
 	<block wx:else>
 		<border style="width: 100%;"></border>
 		<view class="container border-bottom">
 			<form wx:if="{{ username == '' }}" bindloginSuccess="loginSuccess"></form>
-			<check wx:if="{{ username != '' && !checkSuccess && username != 'admin' }}" bindcheckSuccess="checkSuccess"></check>
+			<check wx:else bindcheckSuccess="checkSuccess"></check>
 		</view>
 	</block>
 </view>
