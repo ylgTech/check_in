@@ -5,6 +5,7 @@ Component({
   },
   data: {
     username: '',
+    img:'',
     password_old: '',
     password_new: '',
     days: [0, 0, 0, 0]
@@ -16,6 +17,7 @@ Component({
       this.setData({
         username: getApp().globalData.username,
       })
+      
     },
     moved: function () {},
     detached: function () {},
