@@ -1,7 +1,7 @@
 <cu-custom bgColor="navi-color" isBack="{{false}}">
 		<view class="content1" slot="content">粉末冶金研究院自习打卡</view>
 </cu-custom>
-<view class="body">
+<view class="body" style="top:{{titleBarHeight}}px">
 	<view class="bar-to-hang"></view>
 	<view class="hanging-part"></view>
 	<border style="width: 100%;"></border>

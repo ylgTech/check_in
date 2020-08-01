@@ -44,6 +44,9 @@ Component({
     },
     submit: function () {
       var that = this
+      wx.showLoading({
+        title: '正在登陆',
+      })
       db.collection('accounts').where({
         username: that.data.username,
         password: that.data.password,
@@ -56,6 +59,11 @@ Component({
               username: that.data.username
             })
             wx.setStorageSync('username', that.data.username)
+            wx.hideLoading({
+              success: (res) => {
+                console.log(res)
+              },
+            })
             wx.showToast({
               title: '登录成功',
             })

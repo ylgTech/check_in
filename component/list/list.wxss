@@ -36,3 +36,6 @@
   height: 100rpx;
   margin: -43rpx;
 }
+.cu-card>.cu-item{
+  margin-top: -67rpx;
+}
