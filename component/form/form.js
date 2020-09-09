@@ -69,7 +69,7 @@ Component({
             })
           } else {
             wx.showToast({
-              title: '请检查账号密码是否正确',
+              title: '请检查账号密码是否正确或再次点击登录',
               icon: 'none'
             })
           }
